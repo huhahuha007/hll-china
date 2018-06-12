@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="__STATIC__/layui/css/layui.css" media="all">
+</head>
+<body>
+	<div>
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+             <legend>商品列表</legend>
+    </fieldset>
+ 
+	<form class="form">	
+	<table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>选择</th>
+      <th>ID</th>
+      <th>名称</th>
+      <th>描述</th>
+      <th>图片</th>
+      <th>库存</th>
+      <th>购买数量</th>
+    </tr> 
+  </thead>
+  <tbody>
+    {volist name='goods' id='id'}
+    <tr>
+      <td><input type="checkbox" name="goods_id[]" lay-skin="primary" title="选择" value="{$id.goods_id}"></td>
+      <td>{$id.goods_id}</td>
+      <td>{$id.goods_name}</td>
+      <td>{$id.goods_desc}</td>
+      <td><img src="__ROOT__/uploads/goods/{$id.goods_img}"></td>
+      <td>{$id.goods_stock}</td>
+      <td><input type="text" name="num[]" style="width: 20px"></td>
+    </tr>
+   {/volist}
+  </tbody>
+</table>
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="">立即提交</button>
+    </div>
+  </div>
+</form>
+    <div>
+      
+    </div>
+	</div>
+	<div>
+    <script src="__STATIC__/admin/index/js/jquery.min.js" charset="utf-8"></script>  
+		<script src="__STATIC__/layui/layui.all.js" charset="utf-8"></script>
+	</div>
+  <script type="text/javascript">
+      $('.form').submit(function(){
+        console.log($('.form').serialize());
+        $.ajax({
+          url:"{:url('admin/order/save_goods_id')}",
+          data:$('.form').serialize(),
+          type:'POST',
+          dataType:'json',
+          success:function(res){
+              layer.msg(res.message,{icon:1});
+
+          },
+          error:function(res){
+             layer.msg('选择失败',{icon:2});
+          }
+        })
+      })
+  </script>
+</body>
+</html>
