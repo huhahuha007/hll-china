@@ -13,18 +13,18 @@ class Article extends Base{
         return $this->fetch();
     }
     //文章列表
-    public function  article_list(){
-    	$list = Db::name('article')->paginate(6);
-    	// 把分页数据赋值给模板变量list
-    	$this->assign('list', $list);
-    	// 渲染模板输出6.return $this->fetch();
+    public function article_list1(){
+        $list = Db::name('article')->paginate(6);
+        // 把分页数据赋值给模板变量list
+        $this->assign('list', $list);
+        // 渲染模板输出6.return $this->fetch();
         return $this->fetch();
     }
     //增加文章
-    public function add_article(Request $request){
-    	
-    	return $this->fetch();
-
+    public function add_article1(){
+    $jk_article_category = Db::table('jk_article_category')->select();//获取分类
+    $this->assign('jk_article_category',$jk_article_category);
+    return $this->fetch();
     }
     //添加文章或编辑文章
     public function edit_article(){
@@ -39,6 +39,7 @@ class Article extends Base{
     }
     public function save_article(){
     	$data = input('post.');
+
     	//图片文件
     	$files = request()->file('img');
     	foreach($files as $file){     // 移动到框架应用根目录/public/uploads/ 目录下
@@ -151,5 +152,62 @@ class Article extends Base{
         $data = Db::table('jk_admin')->find();
         $this->assign('data',$data);
         return $this->fetch();
+    }
+    //文章分类列表
+    public function article_category1(){
+        $category_list = Db::table('jk_article_category')->paginate(8);
+        $this->assign('category_list',$category_list);
+        return $this->fetch();
+    }
+    //新增文章分类页面
+    public function add_category(){
+        $category_list = Db::table('jk_article_category')->select();
+        $this->assign('category_list',$category_list);
+        return $this->fetch();
+    }
+    //保存文章分类
+    public function save_category(){
+        $data = input('post.');
+        $result = Db::table('jk_article_category')->insert($data);
+        if($result){
+            $this->success('添加成功!','admin/article/article_category');
+        }
+
+    }
+    //编辑文章分类
+    public function edit_category(){
+        $data = input();
+        $category_info = Db::table('jk_article_category')->where('type_id',$data['type_id'])->find();
+        $this->assign('category_info',$category_info);
+        return $this->fetch();
+
+
+
+    }
+    //保存编辑的分类
+    public function save_edit_category(){
+        $data = input('post.');
+        $result = Db::table('jk_article_category')->where('type_id',$data['type_id'])->update($data);
+        if($result){
+            $this->success('更新成功!','article/article_category');
+        }
+    }
+    //删除文章分类
+    public function delete_category(){
+        $data = input();
+        $is_true = Db::table('jk_article_category')->where('parent_id',$data['type_id'])->find();//查找该分类下的子类
+        $is_goods = Db::table('jk_goods')->where('goods_category',$data['type_id'])->find();
+        if($is_true){
+            $this->error('该分类下有子分类不能删除!');
+        }elseif ($is_goods) {
+            $this->error('该分类下有商品不能删除!');
+        }else{
+            $result = Db::table('jk_article_category')->where('type_id',$data['type_id'])->delete();
+            if($result){
+                $this->success('删除产品分类成功!');
+            }
+
+        }
+
     }
 }

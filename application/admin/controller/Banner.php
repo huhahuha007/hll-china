@@ -99,7 +99,12 @@ class Banner extends Base{
         //2.对于文件单独操作打包成一个文件对象
         $file = $this -> request -> file('banner_img');
         //3.文件验证与上传
+
+        //@@@@@@@@有BUG
         $info = $file -> move(ROOT_PATH . 'public' . DS . 'uploads'.DS.'banner');
+
+
+
         if (is_null($info)){
             $this->error($file->getError());
         }

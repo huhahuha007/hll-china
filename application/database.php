@@ -15,11 +15,11 @@ return [
     // 服务器地址
     'hostname'        => '47.96.92.53',
     // 数据库名
-    'database'        => 'room_jkjs888_co',
+    'database'        => 'hll_china_jkjs8',
     // 用户名
-    'username'        => 'room_jkjs888_co',
+    'username'        => 'hll_china_jkjs8',
     // 密码
-    'password'        => 'xRrFjbzs4dy2pGxa',
+    'password'        => 'bbnc5EsAFCy8hthA',
     // 端口
     'hostport'        => '',
     // 连接dsn
