@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\goods\goods_category.html";i:1526915762;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\goods\goods_category.html";i:1529659753;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

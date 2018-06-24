@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\goods\add_goods.html";i:1529661429;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\goods\edit_goods.html";i:1529659753;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,53 +18,56 @@
 </head>
 <body>
           
-
               
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>添加商品</legend>
+  <legend>编辑商品</legend>
 </fieldset>
  
-<form class="layui-form" action="<?php echo url('admin/goods/save_goods'); ?>" method="post" enctype="multipart/form-data">
+<form class="layui-form" action="<?php echo url('admin/goods/save_edit_goods'); ?>" method="post" enctype="multipart/form-data">
   <div class="layui-form-item" style="width: 360px;">
     <label class="layui-form-label">产品名称</label>
     <div class="layui-input-block">
-      <input type="text" name="goods_name" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="hidden" name="goods_id" value="<?php echo $goods_info['goods_id']; ?>">
+      <input type="text" name="goods_name" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" value="<?php echo $goods_info['goods_name']; ?>">
     </div>
   </div>
   <div class="layui-form-item" style="width: 260px;">
     <label class="layui-form-label">产品编号</label>
     <div class="layui-input-block">
-      <input type="text" name="goods_sn" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="goods_sn" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" value="<?php echo $goods_info['goods_sn']; ?>">
     </div>
   </div>
   <div class="layui-form-item" style="width: 360px;">
     <label class="layui-form-label">产品描述</label>
     <div class="layui-input-block">
-      <input type="text" name="goods_desc" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="goods_desc" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" value="<?php echo $goods_info['goods_desc']; ?>">
     </div>
   </div>
   <div class="layui-form-item" style="width: 260px;">
     <label class="layui-form-label">市场价</label>
     <div class="layui-input-block">
-      <input type="text" name="market_price" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="market_price" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" value="<?php echo $goods_info['market_price']; ?>">
     </div>
   </div>
   <div class="layui-form-item" style="width: 260px;">
     <label class="layui-form-label">商城价</label>
     <div class="layui-input-block">
-      <input type="text" name="shop_price" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="shop_price" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" value="<?php echo $goods_info['shop_price']; ?>">
     </div>
   </div>
    <div class="layui-form-item" style="width: 260px;">
     <label class="layui-form-label">库存</label>
     <div class="layui-input-block">
-      <input type="text" name="goods_stock" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="goods_stock" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" value="<?php echo $goods_info['goods_stock']; ?>">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">展示图</label>
     <div class="layui-input-block">
       <input type="file" name="img1" >
+    </div>
+    <div>
+      <img src="/hll-china/public/uploads/goods/<?php echo $goods_info['goods_img']; ?>" style="height: 100px;height: 100px;">
     </div>
   </div>
   
@@ -76,6 +79,7 @@
     <label class="layui-form-label">选择分类</label>
     <div class="layui-input-block">
       <select name="goods_category" lay-filter="aihao">
+        <option value="">ppp</option>
         <?php if(is_array($jk_goods_category) || $jk_goods_category instanceof \think\Collection || $jk_goods_category instanceof \think\Paginator): $k = 0; $__LIST__ = $jk_goods_category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$id): $mod = ($k % 2 );++$k;?>
         <option value="<?php echo $id['type_id']; ?>"><?php echo $id['type_name']; ?></option>
         <?php endforeach; endif; else: echo "" ;endif; ?>}
@@ -92,7 +96,12 @@
   <input type="file" name="img[]" id="img"  multiple/>     
   <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
     预览图：
-    <div class="layui-upload-list" id="" ></div>
+
+    <div class="layui-upload-list" id="" >
+      <?php if(is_array($goods_gallerys) || $goods_gallerys instanceof \think\Collection || $goods_gallerys instanceof \think\Paginator): $i = 0; $__LIST__ = $goods_gallerys;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$id): $mod = ($i % 2 );++$i;?>
+      <img src="/hll-china/public/uploads/goods/<?php echo $id['goods_gallerys']; ?>" style="height: 100px;height: 100px;">
+      <?php endforeach; endif; else: echo "" ;endif; ?>
+    </div>
  </blockquote>
 </div>
  

@@ -5,24 +5,14 @@ use think\Db;
 use think\Controller;
 
 class News extends Base{
-    //公司简介
+    //新闻
 	public function get_news(){
-		$news_list = Db::table('jk_news')->where(array('news_id'=>18,'is_show'=>1))->select();
-
-		return json_encode($news_list);
-		
-	}
-	//新闻中心
-	public function get_news2(){
-		$news_list = Db::table('jk_news')->where(array('news_id'=>19,'is_show'=>1))->select();
-
-		return json_encode($news_list);
-
-	}
-	//客服中心
-	public function get_news3(){
-		$news_list = Db::table('jk_news')->where(array('news_id'=>20,'is_show'=>1))->select();
-
+		$news_list = Db::table('jk_news')->where(array('is_show'=>1))->select();
 		return json_encode($news_list);
 	}
+    //获取产品分类
+    public function get_category(){
+        $category_list = Db::table('jk_news_category')->select();
+        return json_encode($category_list);
+    }
 }

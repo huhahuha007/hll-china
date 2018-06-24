@@ -63,9 +63,9 @@ class Article extends Base{
 
     	      
     	 if($result){
-    	 	$this->success('新增成功', 'article/article_list');
+    	 	$this->success('新增成功', 'article/article_list1');
     	 }else{
-    	 	$this->error('添加失败','article/article_list');
+    	 	$this->error('添加失败','article/article_list1');
     	 }
     	 
     	

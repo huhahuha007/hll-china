@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\article\add_news.html";i:1528873676;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\news\edit_news.html";i:1529488035;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +12,20 @@
 </head>
 <body>
           
-
+<blockquote class="layui-elem-quote layui-text">
+ <!--  鉴于小伙伴的普遍反馈，先温馨提醒两个常见“问题”：1. <a href="/doc/base/faq.html#form" target="_blank">为什么select/checkbox/radio没显示？</a> 2. <a href="/doc/modules/form.html#render" target="_blank">动态添加的表单元素如何更新？</a> -->
+</blockquote>
               
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>添加文章</legend>
+  <legend>编辑文章</legend>
 </fieldset>
  
-<form class="layui-form" enctype="multipart/form-data" action="<?php echo url('admin/article/save_article'); ?>" method="post" >
+<form class="layui-form" enctype="multipart/form-data" action="<?php echo url('admin/news/save_edit_news'); ?>" method="post" >
+  <input type="hidden" name="news_id" value="<?php echo $list['news_id']; ?>">
   <div class="layui-form-item">
     <label class="layui-form-label">文章标题</label>
     <div class="layui-input-block">
-      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="title" lay-verify="title" autocomplete="off" value="<?php echo $list['title']; ?>" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
  
@@ -32,12 +35,8 @@
     <label class="layui-form-label">文章分类</label>
     <div class="layui-input-block">
       <select name="sort_id" lay-verify="required">
-        <option value=""></option>
-        <option value="0">分类1</option>
-        <option value="1">分类2</option>
-        <option value="2">广州</option>
-        <option value="3">深圳</option>
-        <option value="4">分类</option>
+        <option value=""><?php echo $list['sort_id']; ?></option>
+        
       </select>
     </div>
   </div> -->
@@ -45,37 +44,28 @@
 
   
   <div class="layui-form-item">
-    <!-- <div class="layui-inline">
-      <label class="layui-form-label">日期选择</label>
-      <div class="layui-input-block">
-        <input type="text" name="add_time" id="date1" autocomplete="off" class="layui-input">
-      </div>
-    </div> -->
+    
    
  <div class="layui-upload">
   <label class="layui-form-label">文章附带图</label>
     <div class="layui-input-block">
        <input type="file" name="img[]"  id="img" multiple/>
   </div>
+    <div>
+      <?php foreach($img as $vo): ?> 
+      <img src="/hll-china/public/uploads/news/<?php echo $vo; ?>" style="height: 100px;height: 100px;">
+      
+      <?php endforeach; ?>
+    </div></br>
 </div>
-    <div class="layui-form-item" style="width: 260px;">
-      <label class="layui-form-label">选择分类</label>
-      <div class="layui-input-block">
-        <select name="sort_id" lay-filter="aihao">
-          <?php if(is_array($jk_article_category) || $jk_article_category instanceof \think\Collection || $jk_article_category instanceof \think\Paginator): $k = 0; $__LIST__ = $jk_article_category;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$id): $mod = ($k % 2 );++$k;?>
-          <option value="<?php echo $id['type_name']; ?>"><?php echo $id['type_name']; ?></option>
-          <?php endforeach; endif; else: echo "" ;endif; ?>}
-
-        </select>
-      </div>
-    </div>
+  
   
   
   
   <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">普通文本域</label>
+    <label class="layui-form-label">文章内容</label>
     <div class="layui-input-block">
-      <textarea placeholder="请输入内容" class="layui-textarea" name="content"></textarea>
+      <textarea placeholder="请输入内容" class="layui-textarea" name="content"><?php echo $list['content']; ?></textarea>
     </div>
   </div>
   <!--<div class="layui-form-item layui-form-text">
@@ -86,7 +76,7 @@
   </div>-->
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <input class="layui-btn" type="submit" value="提交" lay-filter="demo1">
+      <input class="layui-btn" type="submit" value="提交">
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -150,9 +140,6 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   
   
 });
- 
-
-
 </script>
 
 </body>

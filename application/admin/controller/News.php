@@ -48,15 +48,16 @@ class News extends Base{
     	       	//echo $info->getExtension(); 
     	       // 输出 42a79759f284b767dfcb2a0197904287.jpg12.           
     	        //echo $info->getFilename();
-    	        $arr[] = $info->getSaveName();//存入变量
-    	        $data['img'] = json_encode($arr);
+                $fileName = $info->getSaveName();//存入变
+                file_put_contents("../wwww.txt", $fileName);
+    	        $data['img'] = $fileName;
     	     }else{
     	         // 上传失败获取错误信息
     	          //echo $file->getError();
     	            }    
     	        }
-    	 
-    	 
+
+
     	 //保存数据
     	            $data['add_time'] = time();
     	 			$result = Db::table('jk_news')->insert($data);

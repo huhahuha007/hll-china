@@ -6,11 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>登入</title>
-<link rel="stylesheet" type="text/css" href="/hll-china//public/static/admin/login/normalize.css">
-<link rel="stylesheet" type="text/css" href="/hll-china//public/static/admin/login/demo.css">
+<link rel="stylesheet" type="text/css" href="/hll-china/public/static/admin/login/normalize.css">
+<link rel="stylesheet" type="text/css" href="/hll-china/public/static/admin/login/demo.css">
 <!--必要样式-->
-<link rel="stylesheet" type="text/css" href="/hll-china//public/static/admin/login/component.css">
-<link rel="stylesheet" type="text/css" href="/hll-china//public/static/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="/hll-china/public/static/admin/login/component.css">
+<link rel="stylesheet" type="text/css" href="/hll-china/public/static/layui/css/layui.css">
 
 <!--[if IE]>
 <script src="js/html5.js"></script>
@@ -38,14 +38,14 @@
 				</div>
 			</div>
 		</div><!-- /container -->
-		<script src="/hll-china//public/static/admin/login/TweenLite.min.js"></script>
-		<script src="/hll-china//public/static/admin/login/EasePack.min.js"></script>
-		<script src="/hll-china//public/static/admin/login/rAF.js"></script>
-		<script src="/hll-china//public/static/admin/login/demo-1.js"></script>
-		<script src="/hll-china//public/static/admin/index/js/jquery.min.js"></script>
-		<script src="/hll-china//public/static/layui/layui.all.js"></script>
+		<script src="/hll-china/public/static/admin/login/TweenLite.min.js"></script>
+		<script src="/hll-china/public/static/admin/login/EasePack.min.js"></script>
+		<script src="/hll-china/public/static/admin/login/rAF.js"></script>
+		<script src="/hll-china/public/static/admin/login/demo-1.js"></script>
+		<script src="/hll-china/public/static/admin/index/js/jquery.min.js"></script>
+		<script src="/hll-china/public/static/layui/layui.all.js"></script>
 		<div style="text-align:center;">
-<p>版权：<a href="/hll-china//public/static/static/admin" target="_blank">京科技术支持</a></p>
+<p>版权：<a href="/hll-china/public/static/static/admin" target="_blank">京科技术支持</a></p>
 		<!-- 提交表单 -->
 
 </div>
