@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\admin\index.html";i:1529546148;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\admin\index.html";i:1529892891;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,6 +68,15 @@
                                     </a>
                                 </dd>
                                 </dd>
+                                <dl class="layui-nav-child">
+                                    <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="<?php echo url('admin/honor/honor_list'); ?>">
+                                            <cite>荣誉资质</cite>
+                                        </a>
+                                    </dd>
+                                    </dd>
+                                </dl>
                             </dl>
                         </li>
                         <li class="layui-nav-item">
