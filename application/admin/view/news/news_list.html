@@ -57,11 +57,7 @@
         <td>{$user.title|mb_substr=###,0,9,'utf-8'}</td>
         <td>{$user.sort_id|mb_substr=###,0,9,'utf-8'}</td>
         <td>{$user.content|mb_substr=###,0,9,'utf-8'}</td>
-        <td>
-        {volist name='$user.img|json_decode' id='user1'}
-        <img src="__ROOT__/uploads/news/{$user1}" style="height: 50px; height: 50px">
-        {/volist}
-        </td>
+        <td><img src="__ROOT__/uploads/news/{$user.img}" style="height: 50px; height: 50px"></td>
         <td>{$user.hits}</td>
         <td>{$user.add_time|date="Y-m-d",###}</td>
         <td onclick="is_elite({$user.news_id},{$user.is_elite})"><input type="checkbox" name="is_elit" value="{$user.is_elite}" lay-skin="switch"  lay-text="ON|OFF" {$user.is_elite==1 ? 'checked':''}></td>

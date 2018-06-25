@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\news\news_list.html";i:1529488117;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\news\news_list.html";i:1529828845;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,11 +58,7 @@
         <td><?php echo mb_substr($user['title'],0,9,'utf-8'); ?></td>
         <td><?php echo mb_substr($user['sort_id'],0,9,'utf-8'); ?></td>
         <td><?php echo mb_substr($user['content'],0,9,'utf-8'); ?></td>
-        <td>
-        <?php if(is_array(json_decode($user['img'])) || json_decode($user['img']) instanceof \think\Collection || json_decode($user['img']) instanceof \think\Paginator): $i = 0; $__LIST__ = json_decode($user['img']);if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$user1): $mod = ($i % 2 );++$i;?>
-        <img src="/hll-china/public/uploads/news/<?php echo $user1; ?>" style="height: 50px; height: 50px">
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-        </td>
+        <td><img src="/hll-china/public/uploads/news/<?php echo $user['img']; ?>" style="height: 50px; height: 50px"></td>
         <td><?php echo $user['hits']; ?></td>
         <td><?php echo date("Y-m-d",$user['add_time']); ?></td>
         <td onclick="is_elite(<?php echo $user['news_id']; ?>,<?php echo $user['is_elite']; ?>)"><input type="checkbox" name="is_elit" value="<?php echo $user['is_elite']; ?>" lay-skin="switch"  lay-text="ON|OFF" <?php echo $user['is_elite']==1?'checked':''; ?>></td>
