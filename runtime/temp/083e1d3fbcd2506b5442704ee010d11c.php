@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\admin\index.html";i:1529892891;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\admin\index.html";i:1529998526;}*/ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -132,6 +132,12 @@
                                             <cite>产品分类</cite>
                                         </a>
                                     </dd>
+                                </dd>
+                                <dd class="">
+                                    <a href="javascript:;" _href="<?php echo url('admin/message/message_list'); ?>">
+                                        <cite>留言列表</cite>
+                                    </a>
+                                </dd>
                                 </dd>
                             </dl>
                         </li>
