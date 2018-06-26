@@ -14,7 +14,7 @@ class Article extends Base{
     }
     //文章列表
     public function article_list1(){
-        $list = Db::name('article')->paginate(6);
+        $list = Db::name('article')->order('article_id desc')->paginate(12);
         // 把分页数据赋值给模板变量list
         $this->assign('list', $list);
         // 渲染模板输出6.return $this->fetch();
@@ -96,9 +96,9 @@ class Article extends Base{
 
               
          if($result){
-            $this->success('编辑成功', 'article/article_list');
+            $this->success('编辑成功', 'article/article_list1');
          }else{
-            $this->error('编辑失败','article/article_list');
+            $this->error('编辑失败','article/article_list1');
          }
     } 
     //删除文章
@@ -115,7 +115,7 @@ class Article extends Base{
          }
         $del_article = Db::table('jk_article')->where('article_id',$article_id['article_id'])->delete();
         if($del_article){
-            $this->success('删除文章成功!','article/article_list');
+            $this->success('删除文章成功!','article/article_list1');
         }
 
     }
