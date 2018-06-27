@@ -30,33 +30,37 @@ class News extends Base{
     public function edit_news(){
     	$info = input();
     	$list = Db::table('jk_news')->where('news_id',$info['news_id'])->find();
+
+        $im = Db::table('jk_news')->where('news_id',$info['news_id'])->value('img');
     	//处理图片数据
     	$img = json_decode($list['img']);
-    	// print_r($img);
+    	 //print_r($im);
     	$this->assign('img',$img);
     	$this->assign('list',$list);
+        $this->assign('im',$im);
     	return $this->fetch();
     }
     public function save_news(){
     	$data = input('post.');
 
-    	//图片文件
-    	$file = request()->file('img');
-        if($file){     // 移动到框架应用根目录/public/uploads/ 目录下
-    	 	$info = $file->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . 'news');
-    	 	if($info){// 成功上传后 获取上传信息9.            // 输出 jpg10.           
-    	       	//echo $info->getExtension(); 
-    	       // 输出 42a79759f284b767dfcb2a0197904287.jpg12.           
-    	        //echo $info->getFilename();
+            //图片文件
+            $files = request()->file('img');
+        foreach($files as $file) {
+            // 移动到框架应用根目录/public/uploads/ 目录下
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads' . DS . 'news');
+            if ($info) {// 成功上传后 获取上传信息9.            // 输出 jpg10.
+                //echo $info->getExtension();
+                // 输出 42a79759f284b767dfcb2a0197904287.jpg12.
+                //echo $info->getFilename();
                 $fileName = $info->getSaveName();//存入变
                 file_put_contents("../wwww.txt", $fileName);
-    	        $data['img'] = $fileName;
-    	     }else{
-    	         // 上传失败获取错误信息
-    	          //echo $file->getError();
-    	            }    
-    	        }
+                $data['img'] = $fileName;
+            } else {
+                // 上传失败获取错误信息
+                //echo $file->getError();
+            }
 
+        }
 
     	 //保存数据
     	            $data['add_time'] = time();
@@ -77,18 +81,18 @@ class News extends Base{
         //图片文件
         $file = request()->file('img');
         if($file){     // 移动到框架应用根目录/public/uploads/ 目录下
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads/news');
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads' . DS . 'news');
             if($info){// 成功上传后 获取上传信息9.            // 输出 jpg10.           
                 //echo $info->getExtension(); 
                // 输出 42a79759f284b767dfcb2a0197904287.jpg12.           
                 //echo $info->getFilename();
-                $arr[] = $info->getSaveName();//存入变量
-                $data['img'] = json_encode($arr);
+                $arr = $info->getSaveName();//存入变量
+                $data['img'] = $arr;
              }else{
                  // 上传失败获取错误信息
                   //echo $file->getError();
                     }    
-                }
+        }
          
          
          //保存数据

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\news\edit_news.html";i:1529488035;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpstudy\WWW\hll-china\public/../application/admin\view\news\edit_news.html";i:1530093456;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,13 +49,12 @@
  <div class="layui-upload">
   <label class="layui-form-label">文章附带图</label>
     <div class="layui-input-block">
-       <input type="file" name="img[]"  id="img" multiple/>
+       <input type="file" name="img"  id="img" multiple/>
   </div>
     <div>
-      <?php foreach($img as $vo): ?> 
-      <img src="/hll-china/public/uploads/news/<?php echo $vo; ?>" style="height: 100px;height: 100px;">
-      
-      <?php endforeach; ?>
+      <?php if($im!=null): ?>
+      <img src="/hll-china/public/uploads/news/<?php echo $im; ?>" style="height: 100px;height: 100px;">
+      <?php endif; ?>
     </div></br>
 </div>
   
