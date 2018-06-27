@@ -41,8 +41,8 @@ class News extends Base{
     	$data = input('post.');
 
     	//图片文件
-    	$files = request()->file('img');
-    	foreach($files as $file){     // 移动到框架应用根目录/public/uploads/ 目录下
+    	$file = request()->file('img');
+        if($file){     // 移动到框架应用根目录/public/uploads/ 目录下
     	 	$info = $file->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . 'news');
     	 	if($info){// 成功上传后 获取上传信息9.            // 输出 jpg10.           
     	       	//echo $info->getExtension(); 
@@ -75,8 +75,8 @@ class News extends Base{
     public function save_edit_news(){
         $data = input('post.');
         //图片文件
-        $files = request()->file('img');
-        foreach($files as $file){     // 移动到框架应用根目录/public/uploads/ 目录下
+        $file = request()->file('img');
+        if($file){     // 移动到框架应用根目录/public/uploads/ 目录下
             $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads/news');
             if($info){// 成功上传后 获取上传信息9.            // 输出 jpg10.           
                 //echo $info->getExtension(); 
